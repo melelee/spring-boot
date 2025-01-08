@@ -69,6 +69,8 @@ import org.springframework.util.StringUtils;
  * @since 1.3.0
  * @see EnableAutoConfiguration
  */
+
+//DeferredImportSelector 延迟加载
 public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware,
 		ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {
 
@@ -107,6 +109,7 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 	 * @param annotationMetadata the annotation metadata of the configuration class
 	 * @return the auto-configurations that should be imported
 	 */
+	//通过spring.factories文件来加载所有@Configuration修饰的配置类，并进行过滤条件表达式进行过滤
 	protected AutoConfigurationEntry getAutoConfigurationEntry(AutoConfigurationMetadata autoConfigurationMetadata,
 			AnnotationMetadata annotationMetadata) {
 		if (!isEnabled(annotationMetadata)) {
